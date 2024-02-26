@@ -12,53 +12,48 @@ import com.salievyt1353.academy.mvofor15_1j.presenter.CounterPresenter
 import com.salievyt1353.academy.mvofor15_1j.presenter.PresenterContracts
 
 class MainActivity : AppCompatActivity(), PresenterContracts.CounterView {
-    private lateinit var binding: ActivityMainBinding
+    private val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
     private lateinit var presenter: CounterPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater).also {
-            setContentView(it.root)
-        }
+        setContentView(binding.root)
         presenter = Injector.getPresenter()
         presenter.attachView(this)
         initListners()
 
     }
-
     private fun initListners(){
         binding.btnPlus.setOnClickListener{
-                presenter.pluss()
-                presenter.toast()
-                presenter.color1()
-                presenter.colorLess10()
-
+            presenter.pluss()
+            presenter.toast()
+            presenter.color1()
+            presenter.colorLess10()
         }
-
         binding.btnMinus.setOnClickListener{
-            with(presenter) {
-                minuss()
-                toast()
-                color1()
-                colorLess10()
-            }
+            presenter.minuss()
+            presenter.color1()
+            presenter.toast()
+            presenter.colorLess10()
+
         }
     }
-
-    override fun updateCounter(counter: Int) {
+    override fun updateCounter(counter:Int){
         binding.tvResult.text = counter.toString()
     }
 
     override fun toast5() {
-        Toast.makeText(this, "Вы достигли до 5", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"count 5",Toast.LENGTH_SHORT).show()
     }
 
-    @SuppressLint("ResourceAsColor")
     override fun color10() {
-        binding.tvResult.setTextColor(Color.GREEN)
+        binding.tvResult.setTextColor(Color.RED)
     }
 
-    @SuppressLint("ResourceAsColor")
     override fun isColorLess10() {
-        binding.tvResult.setTextColor(R.color.black)
+        binding.tvResult.setTextColor(Color.BLACK)
     }
+
+
 }

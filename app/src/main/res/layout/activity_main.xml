@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:gravity="center"
+    android:background="@drawable/img"
     tools:context=".ui.MainActivity">
 
 
@@ -13,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="-"
+        android:backgroundTint="#A1A1"
         android:textSize="30sp"
         android:textColor="@color/white"
         android:id="@+id/btn_minus"/>
@@ -33,7 +35,8 @@
         android:text="+"
         android:textSize="30sp"
         android:textColor="@color/white"
-        android:id="@+id/btn_plus"/>
+        android:id="@+id/btn_plus"
+        android:backgroundTint="#a1a1"/>
 
 
 
